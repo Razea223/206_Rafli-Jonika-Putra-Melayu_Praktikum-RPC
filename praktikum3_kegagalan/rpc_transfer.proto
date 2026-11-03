@@ -1,0 +1,17 @@
+syntax = "proto3";
+package transfer;
+
+service TransferService {
+  rpc Transfer (TransferRequest) returns (StatusResponse);
+  rpc GetSaldo (Empty) returns (SaldoResponse);
+  rpc ResetSaldo (Empty) returns (StatusResponse);
+}
+message Empty {}
+message TransferRequest {
+  string request_id = 1;
+  string dari = 2;
+  string ke = 3;
+  double jumlah = 4;
+}
+message StatusResponse { bool sukses = 1; string pesan = 2; }
+message SaldoResponse { double saldo_a = 1; double saldo_b = 2; }
